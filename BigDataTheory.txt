@@ -1,0 +1,37 @@
+https://www.w3schools.com/xml/----->>>xml study
+https://drive.google.com/drive/folders/1OWZrSQpfGGuN9F25WMohDGugofQCLPPM?usp=sharing------->>>Big data drive
+https://www.youtube.com/watch?v=IVquJh3DXUA---->>>>linux command video
+raviguptatigeranalytics[username]
+raviguptatigeranalyticszawo4[password]raviguptatigeranalyticszawo4
+sqoopdb.slbdh.cloudlabs.com[Host]
+mysql -u raviguptatigeranalytics -praviguptatigeranalyticszawo4 -h sqoopdb.slbdh.cloudlabs.com
+sqoop list-databases --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4
+sqoop list-tables --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4
+sqoop eval --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --query "select *from tigeremp2"
+sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --table tigeremp2 --target-dir tigeremp2/download -m 1
+sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --table tigeremp --target-dir tigeremp/empTabsep  -m 1 --fields-terminated-by '\t'
+
+sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --target-dir tigeremp/empNamesBhopa --query "select eid,ename from tigeremp where ecity='Mumbai' and \$CONDITIONS" -m 1
+sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --table tigeremp --target-dir tigeremp/download -m 1 --incremental append --check-column eid --last-value 4
+sqoop export --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --table empFromHdfs --export-dir /user/raviguptatigeranalytics/tigeremp/empFromBhopa --input-fields-terminated-by ','
+sqoop export --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --table empFromHdfs --export-dir /user/raviguptatigeranalytics/tigeremp/empNamesBhopa --input-fields-terminated-by ','
+sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics/ --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --table tigeremp2 --target-dir tigeremp2/download1 -m 1
+sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --table tigeremp2 --target-dir tigeremp2/empFromMumbai --where "ecity='Mumbai'" -m 1
+sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --table tigeremp2 --target-dir tigeremp2/empMumbai --where "ecity ='Mumbai'" -m 1
+sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --target-dir tigeremp2/empNames --query "select eid,ename from tigeremp2 where ecity='Bhopa' and \$CONDITIONS" -m 1
+sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --table tigeremp2 --target-dir tigeremp2/emptabsep -m 1 --fields-terminated-by '\t' 
+sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --table tigeremp2 --target-dir tigeremp2/download -m 1 --incremental append --check-column eid --last-value 4
+sqoop export --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --table empFromHDFS --export-dir /user/raviguptatigeranalytics/tigeremp2/empMumbai --input-fields-terminated-by ','
+create table walmarttransactions2(txnid int,txndate text,custid int,amount float,category text,subcategory text,state text,city text,txntype text);
+sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --table walmarttransactions --target-dir Practice/download -m 1
+sqoop export --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --table walmarttransactions1 --export-dir /user/raviguptatigeranalytics/smallDataset/txnsSmall --input-fields-terminated-by ','
+sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --table walmarttransactions1 --target-dir smallDataset/dataFromCategory --where "category='Exercise & Fitness'" -m 1
+sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --target-dir Practice/categoryList3 --query "select category,sum(amount) from walmarttransactions1  group by category  where\$CONDITIONS" -m 1
+sqoop eval --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --query "select txntype,count(txntype) from walmarttransactions1  group by txntype"
+where \$CONDITIONS
+sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/aratimunottigeranalytics --username aratimunottigeranalytics --password aratimunottigeranalyticsdy3h2 --target-dir smallDataset/revenueCatReport1  --query "select category,sum(amount) from walmarttransactions where \$CONDITIONS group by category" -m 1
+sqoop import --connect jdbc:mysql://sqoopdb.slbdh.cloudlabs.com/raviguptatigeranalytics --username raviguptatigeranalytics --password raviguptatigeranalyticszawo4 --target-dir smallDataset/reveueByCategory --query "select category,sum(amount) from walmarttransactions1 where \$CONDITIONS group by category" -m 1
+create external table employeeExternal(eid int,ename string,esal int,ecity string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' LOCATIONS 'create external table employeeExternal(eid int,ename string,esal int,ecity string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' LOCATION '/user/raviguptatigeranalytics/empFromTiger2';
+LOAD DATA INPATH '/user/raviguptatigeranalytics/empFromTiger2' INTO TABLE employeeExternal;
+create table walmarttransactions1(txnid int,txndate text,custid int,amount float,category text,subcategory text,state text,city text,txntype text);
+hdfs dfs -put txnsSmall /user/raviguptatigeranalytics/smallDataset/txnsSmall
